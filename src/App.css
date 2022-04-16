@@ -1,38 +1,95 @@
 .App {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -250px;
+  margin-left: -350px;
+  width: 700px;
+  height: 500px;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  border: 1px solid #ccc;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  border-radius: 25px;
+}
+
+.Letter {
+  font-weight: bold;
+  font-size: 80px;
+}
+
+.CorrectAnswer {
+  color: green;
+  border: 1px solid #ccc;
+}
+
+.WrongAnswer {
+  background-image: url(./img/x_icon.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 1px solid #ccc;
+  color: #494949;
+}
+
+.Question {
+  border: 1px solid black;
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.Exercise {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.Option {
+  border: 1px solid #ccc;
+  cursor: pointer;
+  min-width: 70px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Button {
+  font-size: 16px;
+  padding: 15px 40px;
+  margin: 10px;
 }
+
+.List {
+  font-size: 16px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.StatusBar {
+  width: 100%;
+  font-size: 24px;
+}
+
+.CorrectAnswerNumber{
+  background-color: #ccc;
+  color: green;
+  border-radius: 25px 25px 0 0;
+  padding: 5px;
+}
+
+.WrongAnswerNumber {
+  background-color: #ccc;
+  color: red;
+  padding: 5px;
+}
+
+.Explanation {
+  font-size: 36px;
+}
+
+.Message {
+  font-size: 36px;
+  color: dodgerblue;
+}
+
+
+
+
