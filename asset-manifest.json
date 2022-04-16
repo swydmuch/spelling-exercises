@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.346521bd.css",
-    "main.js": "/static/js/main.644bf00c.js",
-    "index.html": "/index.html",
-    "main.346521bd.css.map": "/static/css/main.346521bd.css.map",
-    "main.644bf00c.js.map": "/static/js/main.644bf00c.js.map"
+    "main.css": "/spelling-exercises/static/css/main.346521bd.css",
+    "main.js": "/spelling-exercises/static/js/main.644bf00c.js",
+    "index.html": "/spelling-exercises/index.html",
+    "main.346521bd.css.map": "/spelling-exercises/static/css/main.346521bd.css.map",
+    "main.644bf00c.js.map": "/spelling-exercises/static/js/main.644bf00c.js.map"
   },
   "entrypoints": [
     "static/css/main.346521bd.css",
