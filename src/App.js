@@ -122,6 +122,7 @@ class App extends React.Component {
         :
         (
             <div className="App">
+                <MessageBag explanation="Wybierz zestaw ćwiczeń"></MessageBag>
                 <CharactersList onChange={this.onChangeTrainedCharactersHandler} data={this.listTrainedCharacters}></CharactersList>
                 <Button onClick={this.changeWordHandler} label="START"></Button>
             </div>
