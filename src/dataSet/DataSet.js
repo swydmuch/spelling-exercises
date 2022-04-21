@@ -5,7 +5,12 @@ export class DataSet {
     static getWords(trainedCharacters) {
         for (const setOfExercises of ExercisesData) {
             if (setOfExercises.trainedCharacters.join(',') === trainedCharacters.join(',')) {
-                return setOfExercises.words;
+                return setOfExercises.words.map((word) => {
+                    return {
+                        word: word,
+                        trainedCharacters: trainedCharacters
+                    }
+                });
             }
         }
 
