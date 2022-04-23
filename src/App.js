@@ -6,11 +6,11 @@ import {CharactersList} from "./components/CharactersList";
 import {Button} from "./components/Button";
 import {StatusBar} from "./components/StatusBar";
 import {MessageBag} from "./components/MessageBag";
-import {DifficultWords} from "./Storage/DifficultWords";
+import {LearningStorage} from "./Storage/LearningStorage";
 
-//TODO zapis do localstorage liczby poprawnych i niepoprawnych (zeby móc wyświetlać postęp)
-//TODO wyświetlanie ile cwiczeń pozostało do zakończenia
+//TODO dodać storage na nauczone słowa (z liczbą poprawnych odp)+ obsługa w ćwiczeniach (pomijanie jeśli słowo już ma 3 popr odp)
 //TODO jakieś oznaczenie poprawnej i niepoprawnej odpowiedzi
+//TODO wyświetlanie ile cwiczeń pozostało do zakończenia
 //TODO dostosowanie do urządzeń mobilnych
 
 class App extends React.Component {
@@ -18,7 +18,7 @@ class App extends React.Component {
         super(props);
         this.listTrainedCharacters = DataSet.getListTrainedCharacters();
         this.explanationsMap = DataSet.getExplanations();
-        this.difficultWords = DifficultWords.getAll();
+        this.difficultWords = LearningStorage.getAllDifficult();
         this.words = [];
         this.state = {
             correctAnswer: 0,
@@ -50,7 +50,7 @@ class App extends React.Component {
 
     correctAnswerHandler() {
         let correctAnswer = this.state.correctAnswer + 1;
-        DifficultWords.recordImprovement(this.state.word, this.state.trainedCharacters);
+        LearningStorage.recordImprovement(this.state.word, this.state.trainedCharacters);
         this.setState({
             correctAnswer: correctAnswer
         })
@@ -58,7 +58,7 @@ class App extends React.Component {
 
     wrongAnswerHandler() {
         let wrongAnswer = this.state.wrongAnswer + 1;
-        DifficultWords.recordMistake(this.state.word, this.state.trainedCharacters)
+        LearningStorage.recordMistake(this.state.word, this.state.trainedCharacters)
 
         this.setState({
             wrongAnswer: wrongAnswer
@@ -90,7 +90,7 @@ class App extends React.Component {
         this.setState({
             isDifficultWords: true
         });
-        this.words = DifficultWords.getAll();
+        this.words = LearningStorage.getAllDifficult();
         this.changeWordHandler();
     }
 
@@ -171,7 +171,13 @@ class App extends React.Component {
     }
 
     render() {
-        return this.state.gameStatus === App.GAME_SHOWED_EXERCISE || this.state.gameStatus === App.GAME_RESOLVED_EXERCISE ||  this.state.gameStatus === App.GAME_ENDED  ? this.prepareMainView() : this.prepareMenuView()
+        return this.state.gameStatus === App.GAME_SHOWED_EXERCISE
+            || this.state.gameStatus === App.GAME_RESOLVED_EXERCISE
+            ||  this.state.gameStatus === App.GAME_ENDED
+        ?
+            this.prepareMainView()
+        :
+            this.prepareMenuView()
   }
 }
 

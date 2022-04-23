@@ -1,5 +1,6 @@
 import ExercisesData from "./exercises.json";
 import ExplanationsData from "./explanations.json";
+import {LearningStorage} from "../Storage/LearningStorage";
 
 export class DataSet {
     static getWords(trainedCharacters) {
@@ -10,6 +11,8 @@ export class DataSet {
                         word: word,
                         trainedCharacters: trainedCharacters
                     }
+                }).filter((eachWord) => {
+                    return !LearningStorage.isLearned(eachWord.word, eachWord.trainedCharacters);
                 });
             }
         }
