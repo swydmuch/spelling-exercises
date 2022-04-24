@@ -8,11 +8,6 @@ import {StatusBar} from "./components/StatusBar";
 import {MessageBag} from "./components/MessageBag";
 import {LearningStorage} from "./Storage/LearningStorage";
 
-//TODO dodać storage na nauczone słowa (z liczbą poprawnych odp)+ obsługa w ćwiczeniach (pomijanie jeśli słowo już ma 3 popr odp)
-//TODO jakieś oznaczenie poprawnej i niepoprawnej odpowiedzi
-//TODO wyświetlanie ile cwiczeń pozostało do zakończenia
-//TODO dostosowanie do urządzeń mobilnych
-
 class App extends React.Component {
     constructor(props) {
         super(props);
