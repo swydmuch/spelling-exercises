@@ -22,8 +22,13 @@ export class DataSet {
 
     static getListTrainedCharacters() {
         let list = [];
+        let words = [];
         for (const data of ExercisesData) {
-            list.push(data.trainedCharacters.join(","));
+            words = DataSet.getWords(data.trainedCharacters);
+            list.push({
+                value: data.trainedCharacters.join(","),
+                label: data.trainedCharacters.join(",") + " [" + words.length + " słów do nauki]"
+            });
         }
 
         return list;

@@ -91,7 +91,7 @@ class App extends React.Component {
 
     startSetHandler() {
         if (this.words.length === 0) {
-            alert("Wybierz zestaw ćwiczeń z listy");
+            alert("W wybranym zestawie aktualnie nie masz nic do ćwiczenia");
             return;
         }
 
@@ -148,12 +148,12 @@ class App extends React.Component {
             <div className="App">
                 <div className="Menu">
                     <div className="MenuLine">
-                        <div>Wybierz zestaw do ćwiczeń</div>
+                        <div>Wybierz zestaw ćwiczeń</div>
                         <CharactersList onChange={this.onChangeTrainedCharactersHandler} data={this.listTrainedCharacters}></CharactersList>
                         <Button onClick={this.startSetHandler} label="Ćwicz"></Button>
                     </div>
                     <div className="MenuLine">
-                        <div>lub powtórz trudne słowa (liczba słów do powtórki: {this.difficultWords.length})</div>
+                        <div>lub powtórz trudne słowa [<strong>{this.difficultWords.length}</strong> słów do powtórki]</div>
                         <Button
                             onClick={this.startDifficultHandler}
                             label="Powtórz"
