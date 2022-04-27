@@ -14,6 +14,7 @@ class App extends React.Component {
         this.listTrainedCharacters = DataSet.getListTrainedCharacters();
         this.explanationsMap = DataSet.getExplanations();
         this.difficultWords = LearningStorage.getAllDifficult();
+        this.learnedWords = LearningStorage.getLearnedToExercise();
         this.words = [];
         this.state = {
             correctAnswer: 0,
@@ -21,7 +22,6 @@ class App extends React.Component {
             word: null,
             trainedCharacters: [],
             gameStatus: App.GAME_READY,
-            isDifficultWords: false,
             explanation: ""
         }
 
@@ -36,12 +36,14 @@ class App extends React.Component {
         this.onChangeTrainedCharactersHandler = this.onChangeTrainedCharactersHandler.bind(this);
         this.startDifficultHandler = this.startDifficultHandler.bind(this);
         this.startSetHandler = this.startSetHandler.bind(this);
+        this.startRepetitionHandler = this.startRepetitionHandler.bind(this);
     }
 
     static GAME_READY = 1;
     static GAME_SHOWED_EXERCISE = 2;
     static GAME_RESOLVED_EXERCISE = 3;
     static GAME_ENDED = 4;
+
 
     correctAnswerHandler() {
         let correctAnswer = this.state.correctAnswer + 1;
@@ -82,10 +84,12 @@ class App extends React.Component {
     }
 
     startDifficultHandler() {
-        this.setState({
-            isDifficultWords: true
-        });
-        this.words = LearningStorage.getAllDifficult();
+        this.words = this.difficultWords;
+        this.changeWordHandler();
+    }
+
+    startRepetitionHandler() {
+        this.words = this.learnedWords;
         this.changeWordHandler();
     }
 
@@ -95,9 +99,6 @@ class App extends React.Component {
             return;
         }
 
-        this.setState({
-            isDifficultWords: false
-        });
         this.changeWordHandler();
     }
 
@@ -146,14 +147,26 @@ class App extends React.Component {
     prepareMenuView() {
         return (
             <div className="App">
+
                 <div className="Menu">
+                    <div className="MenuHeader">
+                        <div>Jak chcesz się dzisiaj uczyć?</div>
+                    </div>
                     <div className="MenuLine">
                         <div>Wybierz zestaw ćwiczeń</div>
                         <CharactersList onChange={this.onChangeTrainedCharactersHandler} data={this.listTrainedCharacters}></CharactersList>
                         <Button onClick={this.startSetHandler} label="Ćwicz"></Button>
                     </div>
                     <div className="MenuLine">
-                        <div>lub powtórz trudne słowa [<strong>{this.difficultWords.length}</strong> słów do powtórki]</div>
+                        <div>Powtórz ćwiczone słowa [<strong>{this.learnedWords.length}</strong> słów do powtórki]</div>
+                        <Button
+                            onClick={this.startRepetitionHandler}
+                            label="Powtórz"
+                            disabled={this.learnedWords.length === 0}
+                        ></Button>
+                    </div>
+                    <div className="MenuLine">
+                        <div>Powtórz trudne słowa [<strong>{this.difficultWords.length}</strong> słów do powtórki]</div>
                         <Button
                             onClick={this.startDifficultHandler}
                             label="Powtórz"

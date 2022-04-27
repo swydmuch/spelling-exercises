@@ -115,4 +115,10 @@ export class LearningStorage {
 
         return false;
     }
+
+    static getLearnedToExercise() {
+        return LearningStorage.getAllLearned().filter((eachWord) => {
+            return !LearningStorage.isLearned(eachWord.word, eachWord.trainedCharacters);
+        });
+    }
 }

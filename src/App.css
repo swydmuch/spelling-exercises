@@ -20,7 +20,7 @@ body {
 .Main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
 }
@@ -35,7 +35,17 @@ body {
 .MenuLine {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 10px 50px;
+}
+
+.MenuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 50px;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .Letter {
@@ -75,12 +85,6 @@ body {
   min-width: 70px;
 }
 
-.Button {
-  font-size: 16px;
-  padding: 15px 40px;
-  margin: 10px;
-}
-
 .List {
   font-size: 16px;
   padding: 10px;
@@ -90,7 +94,6 @@ body {
 .StatusBar {
   width: 40%;
   font-size: 24px;
-  padding-top: 25px;
 }
 
 .StatusBar .Row {
@@ -130,6 +133,53 @@ body {
 .Message {
   font-size: 36px;
   color: dodgerblue;
+}
+
+
+
+.Button {
+  background-color: #0078d0;
+  border: 0;
+  border-radius: 56px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  outline: 0;
+  padding: 24px 36px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.Button:before {
+  background-color: initial;
+  background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+  border-radius: 125px;
+  content: "";
+  height: 50%;
+  left: 4%;
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  transition: all .3s;
+  width: 92%;
+}
+
+.Button:hover {
+  box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.05);
+}
+
+.Button[disabled=disabled], .Button:disabled {
+  background-color: #646464;
+  transform: none;
+  cursor: default;
 }
 
 
