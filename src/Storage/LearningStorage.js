@@ -1,3 +1,5 @@
+import {RepetitionTimeCalculator} from "./RepetitionTimeCalculator";
+
 export class LearningStorage {
     static recordMistake(word, trainedCharacters) {
         let difficultWordsArray = LearningStorage.getAllDifficult();
@@ -100,12 +102,12 @@ export class LearningStorage {
 
     static isLearned(word, trainedCharacters) {
         let learnedWords = LearningStorage.getAllLearned();
-        const sevenDaysInMs = 7 * 24 * 60 * 60 * 1000;
+        const now = new Date();
         for(const eachWord of  learnedWords) {
             if (eachWord.word === word
                 && trainedCharacters.join(",") === eachWord.trainedCharacters.join(",")
-                && eachWord.answerStreak >= 3
-                && (new Date()) - (new Date(eachWord.lastAnswer)) < sevenDaysInMs
+                && eachWord.answerStreak >= 2
+                && now - (new Date(eachWord.lastAnswer)) < RepetitionTimeCalculator.countTimeFor(eachWord.answerStreak)
             ) {
                 return true;
             }
