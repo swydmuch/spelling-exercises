@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/spelling-exercises/static/css/main.33499e9f.css",
-    "main.js": "/spelling-exercises/static/js/main.74ee99a2.js",
+    "main.css": "/spelling-exercises/static/css/main.998e5f57.css",
+    "main.js": "/spelling-exercises/static/js/main.35412d37.js",
     "static/media/app_background.png": "/spelling-exercises/static/media/app_background.1103d154a0529a9905d2.png",
     "index.html": "/spelling-exercises/index.html",
-    "main.33499e9f.css.map": "/spelling-exercises/static/css/main.33499e9f.css.map",
-    "main.74ee99a2.js.map": "/spelling-exercises/static/js/main.74ee99a2.js.map"
+    "main.998e5f57.css.map": "/spelling-exercises/static/css/main.998e5f57.css.map",
+    "main.35412d37.js.map": "/spelling-exercises/static/js/main.35412d37.js.map"
   },
   "entrypoints": [
-    "static/css/main.33499e9f.css",
-    "static/js/main.74ee99a2.js"
+    "static/css/main.998e5f57.css",
+    "static/js/main.35412d37.js"
   ]
 }
