@@ -1,13 +1,15 @@
 import {RepetitionTimeCalculator} from "./RepetitionTimeCalculator";
 
 export class LearningStorage {
+    static REPETITION_FOR_DIFFICULT = 2;
+    static ANSWER_FOR_LEARNED = 2;
     static recordMistake(word, trainedCharacters) {
         let difficultWordsArray = LearningStorage.getAllDifficult();
         let alreadyAdded = false;
         difficultWordsArray = difficultWordsArray.map((eachWord) => {
             if (eachWord.word === word && trainedCharacters.join(",") === eachWord.trainedCharacters.join(",")) {
                 alreadyAdded = true;
-                eachWord.repetitionCounter = 3;
+                eachWord.repetitionCounter = LearningStorage.REPETITION_FOR_DIFFICULT;
             }
 
             return eachWord;
@@ -17,7 +19,7 @@ export class LearningStorage {
             const wordData = {
                 word: word,
                 trainedCharacters: trainedCharacters,
-                repetitionCounter: 3,
+                repetitionCounter: LearningStorage.REPETITION_FOR_DIFFICULT,
             };
 
             difficultWordsArray.push(wordData);
@@ -106,8 +108,21 @@ export class LearningStorage {
         for(const eachWord of  learnedWords) {
             if (eachWord.word === word
                 && trainedCharacters.join(",") === eachWord.trainedCharacters.join(",")
-                && eachWord.answerStreak >= 2
+                && eachWord.answerStreak >= LearningStorage.ANSWER_FOR_LEARNED
                 && now - (new Date(eachWord.lastAnswer)) < RepetitionTimeCalculator.countTimeFor(eachWord.answerStreak)
+            ) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    static isDifficult(word, trainedCharacters) {
+        let learnedWords = LearningStorage.getAllDifficult();
+        for(const eachWord of  learnedWords) {
+            if (eachWord.word === word
+                && trainedCharacters.join(",") === eachWord.trainedCharacters.join(",")
             ) {
                 return true;
             }
@@ -118,7 +133,10 @@ export class LearningStorage {
 
     static getLearnedToExercise() {
         return LearningStorage.getAllLearned().filter((eachWord) => {
-            return !LearningStorage.isLearned(eachWord.word, eachWord.trainedCharacters);
+            return !(
+                LearningStorage.isLearned(eachWord.word, eachWord.trainedCharacters)
+                || LearningStorage.isDifficult(eachWord.word, eachWord.trainedCharacters)
+            );
         });
     }
 }
