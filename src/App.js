@@ -7,6 +7,7 @@ import {Button} from "./components/Button";
 import {StatusBar} from "./components/StatusBar";
 import {MessageBag} from "./components/MessageBag";
 import {LearningStorage} from "./Storage/LearningStorage";
+import {LearnedStats} from "./components/LearnedStats";
 
 class App extends React.Component {
     constructor(props) {
@@ -22,7 +23,8 @@ class App extends React.Component {
             word: null,
             trainedCharacters: [],
             gameStatus: App.GAME_READY,
-            explanation: ""
+            explanation: "",
+            showLearnedStats: false,
         }
 
         this.positions = [];
@@ -113,6 +115,12 @@ class App extends React.Component {
         this.words = DataSet.getWords(trainedCharacters);
     }
 
+    toggleLearnedStats() {
+        this.setState({
+            showLearnedStats: !this.state.showLearnedStats
+        });
+    }
+
     prepareMainView() {
         return (
             <div className="App">
@@ -154,7 +162,8 @@ class App extends React.Component {
                     </div>
                     <div className="MenuLine">
                         <div>Wybierz zestaw ćwiczeń</div>
-                        <CharactersList onChange={this.onChangeTrainedCharactersHandler} data={this.listTrainedCharacters}></CharactersList>
+                        <CharactersList onChange={this.onChangeTrainedCharactersHandler}
+                                        data={this.listTrainedCharacters}></CharactersList>
                         <Button onClick={this.startSetHandler} label="Ćwicz"></Button>
                     </div>
                     <div className="MenuLine">
@@ -164,18 +173,23 @@ class App extends React.Component {
                             label="Powtórz"
                             disabled={this.learnedWords.length === 0}
                         ></Button>
+                        <Button
+                            onClick={this.toggleLearnedStats.bind(this)}
+                            label="Statystki"
+                        ></Button>
                     </div>
                     <div className="MenuLine">
                         <div>Powtórz trudne słowa [<strong>{this.difficultWords.length}</strong> słów do powtórki]</div>
                         <Button
                             onClick={this.startDifficultHandler}
                             label="Powtórz"
-                            disabled={this.difficultWords.length===0}
+                            disabled={this.difficultWords.length === 0}
                         ></Button>
                     </div>
                 </div>
+                {this.state.showLearnedStats ? <LearnedStats words={this.learnedWords}></LearnedStats> : null }
             </div>
-        )
+        );
     }
 
     render() {
