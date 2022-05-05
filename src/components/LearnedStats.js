@@ -17,7 +17,7 @@ export class LearnedStats extends React.Component {
                 answerStreak: eachWord.answerStreak,
                 id: index,
                 trained: eachWord.trainedCharacters.join(","),
-                lastAnswer: Date(eachWord.lastAnswer).toLocaleString()
+                lastAnswer: new Date(eachWord.lastAnswer).toLocaleString()
         })});
     }
 
