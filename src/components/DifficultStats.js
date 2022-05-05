@@ -4,20 +4,18 @@ import {Button} from "./Button";
 
 const columns: GridColDef[] = [
     { field: 'trained', headerName: 'Litery', width: 75 },
-    { field: 'word', headerName: 'Słowo', width: 150 },
-    { field: 'answerStreak', headerName: 'Liczba poprawnych odpowiedzi', width: 150 },
-    { field: 'lastAnswer', headerName: 'Data ostatniej poprawnej odpowiedzi', width: 400 },
+    { field: 'word', headerName: 'Słowo', width: 200 },
+    { field: 'repetitionCounter', headerName: 'Liczba powtórzeń do wykonania', width: 350 }
 ];
 
-export class LearnedStats extends React.Component {
+export class DifficultStats extends React.Component{
     constructor(props) {
         super(props);
         this.rows = this.props.words.map((eachWord, index) => { return ({
-                word: eachWord.word,
-                answerStreak: eachWord.answerStreak,
-                id: index,
-                trained: eachWord.trainedCharacters.join(","),
-                lastAnswer: Date(eachWord.lastAnswer).toLocaleString()
+            word: eachWord.word,
+            repetitionCounter: eachWord.repetitionCounter,
+            id: index,
+            trained: eachWord.trainedCharacters.join(",")
         })});
     }
 
