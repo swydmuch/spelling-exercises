@@ -11,8 +11,6 @@ export class DataSet {
                         word: word,
                         trainedCharacters: trainedCharacters
                     }
-                }).filter((eachWord) => {
-                    return !LearningStorage.isLearned(eachWord.word, eachWord.trainedCharacters);
                 });
             }
         }
