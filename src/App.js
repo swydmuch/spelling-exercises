@@ -79,12 +79,12 @@ class App extends React.Component {
     }
 
     startDifficultHandler() {
-        this.words = this.difficultWords;
+        this.words = this.difficultWords.slice(0,29);
         this.changeWordHandler();
     }
 
     startRepetitionHandler() {
-        this.words = this.learnedWords;
+        this.words = this.learnedWords.slice(0,29);
         this.changeWordHandler();
     }
 
@@ -105,7 +105,7 @@ class App extends React.Component {
 
     onChangeTrainedCharactersHandler(e){
         let trainedCharacters = e.currentTarget.value.split(",");
-        this.words = DataSet.getWords(trainedCharacters);
+        this.words = DataSet.getWords(trainedCharacters).slice(0,29);
     }
 
     toggleLearnedStats() {
