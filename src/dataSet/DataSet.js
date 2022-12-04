@@ -4,16 +4,14 @@ import {LearningStorage} from "../Storage/LearningStorage";
 
 export class DataSet {
     static getWords(trainedCharacters) {
-        for (const setOfExercises of ExercisesData) {
-            if (setOfExercises.trainedCharacters.join(',') === trainedCharacters.join(',')) {
-                return setOfExercises.words.map((word) => {
-                    return {
-                        word: word,
-                        trainedCharacters: trainedCharacters
-                    }
-                });
+       return ExercisesData.words.filter(word => word.indexOf(trainedCharacters[0]) > -1).map((word) => {
+            if (word.indexOf(trainedCharacters[0]) > -1) {
+                return {
+                    word: word,
+                    trainedCharacters: trainedCharacters
+                }
             }
-        }
+        });
 
         throw new Error('trained characters not in data set');
     }
@@ -21,11 +19,11 @@ export class DataSet {
     static getListTrainedCharacters() {
         let list = [];
         let words = [];
-        for (const data of ExercisesData) {
-            words = DataSet.getWords(data.trainedCharacters);
+        for (const data of ExercisesData.trainedCharacters) {
+            words = DataSet.getWords(data);
             list.push({
-                value: data.trainedCharacters.join(","),
-                label: data.trainedCharacters.join(",") + " [" + words.length + " słów do nauki]"
+                value: data.join(","),
+                label: data.join(",") + " [" + words.length + " słów do nauki]"
             });
         }
 
