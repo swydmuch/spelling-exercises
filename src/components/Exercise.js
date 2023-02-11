@@ -35,6 +35,7 @@ export class Exercise extends React.Component {
                             character: founded,
                             type: "Question"
                         });
+                        //TODO: question powinno być ustawiane jesli wystąpi dowolny znak z wszystkich trainingCharacters
                         questionNumber++;
                         i += founded.length;
                     }
