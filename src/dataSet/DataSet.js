@@ -4,13 +4,13 @@ import {LearningStorage} from "../Storage/LearningStorage";
 
 export class DataSet {
     static getWords(trainedCharacters) {
-       return ExercisesData.words.filter(word => word.indexOf(trainedCharacters[0]) > -1).map((word) => {
-            if (word.indexOf(trainedCharacters[0]) > -1) {
+       return ExercisesData.words
+           .filter(word => word.indexOf(trainedCharacters[0]) > -1 || word.indexOf(trainedCharacters[1]) > -1 )
+           .map((word) => {
                 return {
                     word: word,
                     trainedCharacters: trainedCharacters
                 }
-            }
         });
 
         throw new Error('trained characters not in data set');
