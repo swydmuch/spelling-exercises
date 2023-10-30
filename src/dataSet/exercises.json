@@ -2,7 +2,10 @@
   "trainedCharacters": [
     ["rz", "ż"],
     ["ch", "h"],
-    ["ó",  "u"]
+    ["ó",  "u"],
+    ["ś", "si"],
+    ["ć", "ci"],
+    ["ą", "on"]
   ],
   "words": [
     "rzeka",
@@ -131,6 +134,20 @@
     "bielutki",
     "śniegu",
     "głód",
-    "wokół"
+    "wokół",
+    "dziesięć",
+    "dwadzieścia",
+    "trzydzieści",
+    "czterdzieści",
+    "pięćdziesiąt",
+    "sześćdziesiąt",
+    "siedemdziesiąt",
+    "osiemdziesiąt",
+    "dziewięćdziesiąt",
+    "siedemdziesiąt trzy",
+    "dziewięćdziesiąt pięć",
+    "sześćdziesiąt trzy",
+    "czterdzieści dziewięć",
+    "siedemdziesiąt sześć"
   ]
 }
