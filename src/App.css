@@ -7,8 +7,8 @@ body {
   top: 50%;
   left: 50%;
   margin-top: -250px;
-  margin-left: -350px;
-  width: 700px;
+  margin-left: -450px;
+  width: 900px;
   height: 500px;
   text-align: center;
   border: 1px solid #ccc;
@@ -51,6 +51,7 @@ body {
 .Letter {
   font-weight: bold;
   font-size: 80px;
+  min-width: 30px;
 }
 
 .CorrectAnswer {
